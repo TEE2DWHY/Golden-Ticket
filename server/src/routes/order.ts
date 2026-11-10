@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { listInventory, purchase } from "../controllers/order";
+import { getInventory, getProduct, purchase } from "../controllers/order";
 const router = Router()
 
 router.post("/buy", purchase)
-router.get("/inventory/:productId", listInventory)
+router.get("/inventory", getInventory)
+router.get("/inventory/:productId", getProduct)
 
 export default router
