@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@tsconfig/node20": "^20.1.10",
     "@types/express": "^5.0.6"
