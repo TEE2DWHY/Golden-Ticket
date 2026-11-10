@@ -18,7 +18,7 @@ export const usePurchase = () => {
     return useMutation({
         mutationFn: purchaseTicket,
 
-        onSuccess: () => {
+        onSettled: () => {
             queryClient.invalidateQueries({
                 queryKey: ["inventory"]
             });

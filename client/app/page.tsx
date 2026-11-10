@@ -74,6 +74,9 @@ export default function Home() {
     ? purchaseError.response?.data?.data?.message ?? purchaseError.message
     : purchaseError?.message
 
+    const isSoldOutError = isAxiosError(purchaseError) && purchaseError.response?.status === 409
+
+
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center p-4">
       <div className="bg-white shadow-lg p-6 flex gap-6 w-full max-w-4xl uppercase text-sm">
@@ -160,6 +163,10 @@ export default function Home() {
 
             {isPurchaseError && (
               <p className="text-red-500">{purchaseMessage}</p>
+            )}
+
+            {isSoldOutError && (
+               <p className="text-red-500">{purchaseMessage}</p>
             )}
           </div>
 

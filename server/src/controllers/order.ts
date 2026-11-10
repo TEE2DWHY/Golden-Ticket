@@ -25,7 +25,7 @@ export const purchase = async(req: Request, res: Response) =>{
             return createResponse(res, {data: {message: "Product Not Found."}, status: StatusCodes.NOT_FOUND})
         }
         if(!hasStock(product.quantity, quantity)){
-            return createResponse(res, {data: {message: "Insufficient Quantity."}, status: StatusCodes.BAD_REQUEST})
+            return createResponse(res, {data: {message: "Sold Out."}, status: StatusCodes.CONFLICT})
         }
         const updated = await Product.findOneAndUpdate(
             {_id: productId, quantity: {$gte: quantity}},
@@ -33,7 +33,7 @@ export const purchase = async(req: Request, res: Response) =>{
             {new: true}
         )
         if(!updated){
-            return createResponse(res, {data: {message: "Insufficient Quantity."}, status: StatusCodes.BAD_REQUEST})
+            return createResponse(res, {data: {message: "Sold Out."}, status: StatusCodes.CONFLICT})
         }
         createResponse(res, {data: {
             message: "Purchase is Successful",
