@@ -30,10 +30,10 @@ To prevent this, I moved the stock validation and decrement into a single MongoD
 
 ```ts
 const updated = await Product.findOneAndUpdate(
-    {_id: productId, quantity: {$gte: quantity}},
-    {$inc: {quantity: -quantity}},
-    {new: true}
-)
+	{ _id: productId, quantity: { $gte: quantity } },
+	{ $inc: { quantity: -quantity } },
+	{ new: true },
+);
 ```
 
 The important part is that the stock condition and decrement happen together.

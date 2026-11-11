@@ -4,7 +4,6 @@ import type { Inventory } from "../types/inventory";
 
 const getInventory = async (): Promise<Inventory[]> => {
     const response = await api.get("/inventory");
-
     return response.data.data.products ?? [];
 };
 

@@ -161,12 +161,12 @@ export default function Home() {
               </div>
             </div>
 
-            {isPurchaseError && (
+            {isPurchaseError && !isSoldOutError && (
               <p className="text-red-500">{purchaseMessage}</p>
             )}
 
             {isSoldOutError && (
-               <p className="text-red-500">{purchaseMessage}</p>
+              <p className="text-gray-500">Sorry, not enough tickets left for this order.</p>
             )}
           </div>
 
